@@ -1,0 +1,12 @@
+<div>
+  <h4 class="text-center">{{question.question}}</h4>
+  <span class="text-center">{{question.answer}}</span>
+  <div class="flex-container">
+    <div *ngFor="let option of question.options" class="ml-10 mr-10 option btn-toolbar" >
+        <button type="button" class="btn btn-lg btn-default btn-block" 
+        [ngClass]="{'btn-primary' : question.result === option.id}"
+        (click)="selectOption(option)"
+        >{{option.text}}</button>
+    </div>
+  </div>
+</div>

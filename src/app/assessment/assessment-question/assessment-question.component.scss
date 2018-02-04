@@ -1,0 +1,17 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .option {
+      margin: 15px 20px; 
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      width: 200px;;
+      word-wrap: break-word
+  }
+
+  .btn {
+      padding: 20px 20px;
+  }
