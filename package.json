@@ -8,6 +8,7 @@
     "build": "ng build --prod --aot",
     "prebuild": "npm run lint",
     "test": "ng test",
+    "test:singleRun": "ng test --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
