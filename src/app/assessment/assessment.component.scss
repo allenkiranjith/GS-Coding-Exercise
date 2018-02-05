@@ -6,26 +6,31 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     min-height: 50%;
 }
-
 .flex-container {
     display: flex;
     justify-content: space-between;
     height: 50px;
-  }
-
-  .prev-btn {
-      background: url('../../assets/images/prev.jpg') no-repeat top center;
-      background-size:contain;
-      width: 2rem;
-      cursor: pointer;
-  }
-
-  .score {
-      border-radius: 50%;
-      background-color: gainsboro;
-      padding: 5px 10px;
-  }
-
-  .py-20 {
+}
+.prev-btn {
+    background: url('../../assets/images/prev.jpg') no-repeat top center;
+    background-size:contain;
+    width: 2rem;
+    cursor: pointer;
+}
+.next-btn {
+    @extend .prev-btn;
+    transform: rotate(180deg);
+    background-position: bottom;
+}
+.score {
+    border-radius: 50%;
+    background-color: gainsboro;
+    padding: 5px 10px;
+}
+.py-20 {
     padding: 20px 0px;
-  }
+}
+.counter {
+    margin-left: auto;
+    padding-right: 20px;
+}

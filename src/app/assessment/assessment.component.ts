@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AssessmentService } from './assessment.service';
+import { AssessmentService } from '../services/assessment.service';
 import { IQuestion } from '../shared';
 
 @Component({
   selector: 'gs-assessment',
   templateUrl: './assessment.component.html',
   styleUrls: ['./assessment.component.scss'],
-  providers: [ AssessmentService ]
+  providers: [AssessmentService]
 })
 export class AssessmentComponent implements OnInit {
   questions: IQuestion[];
   currentQuestionIndex: number;
+  isCurrentQuestionAnswered = false;
 
   constructor(private assessmentService: AssessmentService, private router: Router) { }
 
   ngOnInit() {
-      this.initialize();
+    this.initialize();
   }
 
   initialize() {
@@ -29,14 +30,20 @@ export class AssessmentComponent implements OnInit {
 
   nextQuestion() {
     this.currentQuestionIndex = this.currentQuestionIndex < this.questions.length
-                                ? ++this.currentQuestionIndex
-                                : this.currentQuestionIndex;
+      ? ++this.currentQuestionIndex
+      : this.currentQuestionIndex;
+    
+      this.isCurrentQuestionAnswered = this.currentQuestionIndex < this.questions.length
+      ? this.questions[this.currentQuestionIndex].result !== undefined
+      : false;
   }
 
   previousQuestion() {
     this.currentQuestionIndex = this.currentQuestionIndex > 0
-                                ? --this.currentQuestionIndex
-                                : this.currentQuestionIndex;
+      ? --this.currentQuestionIndex
+      : this.currentQuestionIndex;
+
+      this.isCurrentQuestionAnswered = true;
   }
 
   optionSelected(question: IQuestion) {

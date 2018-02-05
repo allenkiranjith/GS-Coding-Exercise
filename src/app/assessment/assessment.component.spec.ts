@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { AssessmentComponent } from './assessment.component';
-import { AssessmentService } from './assessment.service';
+import { AssessmentService } from '../services/assessment.service';
 import { IQuestion } from '../shared';
 import { MockAssessmentService, questionsMockObject } from './assessment-mock.service';
 
@@ -19,15 +19,15 @@ describe('AssessmentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssessmentComponent ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      imports: [ HttpClientModule ],
+      declarations: [AssessmentComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [HttpClientModule],
       providers: [
-        {provide: AssessmentService, useClass: MockAssessmentService },
+        { provide: AssessmentService, useClass: MockAssessmentService },
         { provide: Router, useValue: {} }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

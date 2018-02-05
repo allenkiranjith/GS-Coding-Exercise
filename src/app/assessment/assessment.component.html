@@ -2,26 +2,27 @@
   <div *ngIf="currentQuestionIndex < questions.length; else finalScore">
     <div class="flex-container">
       <a *ngIf="currentQuestionIndex > 0" class="prev-btn" (click)="previousQuestion()"></a>
-      <div class="ml-auto">
-          <span id="page">Step {{currentQuestionIndex + 1}} of {{questions.length}}</span>
+      <div class="counter">
+        <span id="page">Step {{currentQuestionIndex + 1}} of {{questions.length}}</span>
       </div>
+      <a *ngIf="isCurrentQuestionAnswered" class="next-btn" (click)="nextQuestion()"></a>
     </div>
     <div>
-      <gs-assessment-question [question]="questions[currentQuestionIndex]"
-        (optionSelected) ="optionSelected($event)"></gs-assessment-question>
+      <gs-assessment-question [question]="questions[currentQuestionIndex]" (optionSelected)="optionSelected($event)"></gs-assessment-question>
     </div>
-</div>
+  </div>
   <ng-template #finalScore>
     <div class="text-center">
       <div class="py-20">
         <h4>Successfully completed the assessment</h4>
       </div>
       <div class="py-20">
-          <h3>Your score is <span class="score">{{score}}</span></h3>
+        <h3>Your score is
+          <span class="score">{{score}}</span>
+        </h3>
       </div>
       <div class="py-20">
-          <button type="button" class="btn btn-lg btn-default" 
-          (click) = "restartAssessment()">Restart Assessment</button>
+        <button type="button" class="btn btn-lg btn-default" (click)="restartAssessment()">Restart Assessment</button>
       </div>
     </div>
   </ng-template>
